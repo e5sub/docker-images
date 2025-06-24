@@ -14,7 +14,7 @@
 ## 使用方法
 
 ### 1. 一键运行脚本
-bash <(curl -Ls https://cdn.jsdelivr.net/gh/e5sub/docker-images@master/install.sh) 
+bash <(curl -Ls https://fastly.jsdelivr.net/gh/e5sub/docker-images@master/install.sh) 
 ### 2. 选择服务
 脚本会显示一个服务列表，你可以输入服务的序号（用空格分隔多个选项）或输入 `all` 选择所有服务。例如：请选择要安装的服务（用空格分隔多个选项，输入 all 选择所有服务）：
 --------------------------------------------------------------------------------
