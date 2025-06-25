@@ -54,7 +54,7 @@ docker_install
 
 # 定义配置文件路径和下载地址
 compose_file="./docker-compose.yml"
-compose_url="https://fastly.jsdelivr.net/gh/e5sub/hst@master/docker/docker-compose.yml"
+compose_url="https://fastly.jsdelivr.net/gh/e5sub/docker-images@master/docker-compose.yml"
 
 # 检查文件是否存在
 if [ -f "$compose_file" ]; then
