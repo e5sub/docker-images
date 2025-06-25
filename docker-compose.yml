@@ -154,9 +154,9 @@ services:
       - TZ=Asia/Shanghai
 
   # 异地组网服务
-  tailscaled:
+  tailscale:
     image: tailscale/tailscale
-    container_name: tailscaled
+    container_name: tailscale
     restart: unless-stopped
     network_mode: host
     cap_add:
@@ -230,8 +230,9 @@ services:
       - /opt/ql/data:/ql/data
 
   # 远程桌面服务API
-  rustdesk:
+  rustdesk-server:
     image: lejianwen/rustdesk-server-s6:latest
+    container_name: rustdesk-server
     environment:
       - RELAY=xxx.com:21117 # 替换为你的中继服务器地址
       - ENCRYPTED_ONLY=1
@@ -399,8 +400,8 @@ services:
       - /opt/nginx/html:/usr/share/nginx/html
       - /opt/nginx/conf:/etc/nginx
       - /opt/nginx/log:/var/log/nginx
-      
-  # jenkins 持续集成工具（8085、50000） 
+
+  # Jenkins 持续集成工具（8085、50000） 
   jenkins:
     image: jenkins/jenkins:latest
     container_name: jenkins
@@ -414,7 +415,7 @@ services:
     volumes:
       - /opt/jenkins:/var/jenkins_home   
  
-  # gitlab 代码托管平台（10022、10080、10443）
+  # Gitlab 代码托管平台（10022、10080、10443）
   gitlab:
     image: gitlab/gitlab-ce:latest
     container_name: gitlab
@@ -496,7 +497,7 @@ services:
       - /opt/postgresql/conf:/etc/postgresql
       - /opt/postgresql/log:/var/log/postgresql
 
-  # minio对象存储服务（9000、9001）
+  # Minio对象存储服务（9000、9001）
   minio:
     image: minio/minio:latest
     container_name: minio
