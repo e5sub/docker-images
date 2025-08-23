@@ -186,6 +186,8 @@ services:
     container_name: tailscaled
     restart: unless-stopped
     network_mode: host
+    devices:
+      - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
       - NET_RAW
@@ -193,10 +195,10 @@ services:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_AUTHKEY=tskey-auth-k68eNkeSyz11CNTRL-LcAE9LYDCP # 替换为你的 Tailscale Auth Key
       - TS_EXTRA_ARGS=--advertise-routes=192.168.0.0/24 --advertise-exit-node
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Shanghai      
+      - TS_USERSPACE=false
     volumes:
-      - /opt/tailscale:/var/lib/tailscale
-      - /dev/net/tun:/dev/net/tun
+      - /opt/tailscale/data:/var/lib/tailscale
 
   # 肥羊IPTV（35455）
   allinone:
