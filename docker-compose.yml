@@ -628,18 +628,14 @@ services:
       - /opt/postgresql/conf:/etc/postgresql
       - /opt/postgresql/log:/var/log/postgresql     
 
-  # Minio对象存储服务（9000、9001）
-  minio:
-    image: minio/minio:latest
-    container_name: minio
+  # rustfs对象存储服务（9000、9001）
+  rustfs:
+    container_name: rustfs
+    image: rustfs/rustfs:latest
     restart: unless-stopped
     ports:
       - "9000:9000"
       - "9001:9001"
     volumes:
-      - /opt/minio/data:/mnt/data
-      - /opt/minio/minio:/etc/config.env
-    environment:
-      - MINIO_CONFIG_ENV_FILE=/etc/config.env
-      - TZ=Asia/Shanghai
-    command: server --console-address ":9001"   
+      - /opt/rustfs/data:/data
+      - /opt/rustfs/logs:/logs
