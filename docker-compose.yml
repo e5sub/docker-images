@@ -9,6 +9,7 @@ services:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_REMOVE_VOLUMES=true
       - WATCHTOWER_SCHEDULE=0 0 2 * * *
+      - DOCKER_API_VERSION=1.49
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     mem_limit: 128m
@@ -633,6 +634,8 @@ services:
     container_name: rustfs
     image: rustfs/rustfs:latest
     restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
     ports:
       - "9000:9000"
       - "9001:9001"
