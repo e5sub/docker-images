@@ -135,7 +135,7 @@ services:
       - /opt/StirlingPDF/logs:/logs/
       - /opt/StirlingPDF/pipeline:/pipeline/
     environment:
-      - DOCKER_ENABLE_SECURITY=false
+      - SECURITY_ENABLELOGIN=true
       - LANGS=zh_CN
       - TZ=Asia/Shanghai
     restart: unless-stopped
